@@ -1,4 +1,4 @@
-package com.sparta.miniproject.order.domain;
+package com.sparta.miniproject.domain.order.entity;
 
 import com.sparta.miniproject.domain.BaseEntity;
 import jakarta.persistence.Entity;
