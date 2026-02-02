@@ -30,5 +30,23 @@ public class Product extends BaseEntity {
 
 	@Column(nullable = false, columnDefinition = "INT DEFAULT 0")
 	private Long stock;
+
+	public void modifyProduct(String name, Long price, Long stock) {
+		validationCheck(price, stock);
+		this.name = name != null && !name.isBlank() ? name : this.name;
+		this.price = price != null ? price : this.price;
+		this.stock = stock != null ? stock : this.stock;
+	}
+
+	private void validationCheck(Long price, Long stock) {
+		if (price != null && price < 0) {
+			//TODO customize exception
+			throw new RuntimeException("Price must be greater than 0");
+		}
+		if (stock != null && stock < 0) {
+			//TODO customize exception
+			throw new RuntimeException("Stock must be greater than 0");
+		}
+	}
 }
 
