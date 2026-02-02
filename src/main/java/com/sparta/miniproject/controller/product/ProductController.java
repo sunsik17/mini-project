@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/products")
-public class ProductWriteController {
+public class ProductController {
 
 	private final ProductWriteService productWriteService;
 
 	@PostMapping
-	public ResponseEntity<?> registrationProduct(
+	public ResponseEntity<ResponseProduct> registrationProduct(
 		@RequestBody @Valid RegistrationProduct registrationProduct) {
 
-		return ResponseEntity.ok().body(productWriteService.create(registrationProduct));
+		return ResponseEntity.ok()
+			.body(ResponseProduct.fromDto(productWriteService.create(registrationProduct)));
 	}
 }
