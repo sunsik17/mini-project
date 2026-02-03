@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 @Entity
 @Getter
@@ -47,6 +48,11 @@ public class Product extends BaseEntity {
 			//TODO customize exception
 			throw new RuntimeException("Stock must be greater than 0");
 		}
+	}
+
+	public void decreaseStock() {
+		Assert.isTrue(stock - 1 >= 0, "Stock is not enough");
+		this.stock--;
 	}
 }
 

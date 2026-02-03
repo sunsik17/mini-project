@@ -1,4 +1,4 @@
-package com.sparta.miniproject.controller.product;
+package com.sparta.miniproject.application.controller.product;
 
 import com.sparta.miniproject.domain.product.dto.request.RegistrationProductForm;
 import com.sparta.miniproject.domain.product.dto.request.UpdateProductForm;
@@ -7,6 +7,7 @@ import com.sparta.miniproject.domain.product.service.ProductReadService;
 import com.sparta.miniproject.domain.product.service.ProductWriteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class ProductController {
 	public ResponseEntity<ResponseProduct> registrationProduct(
 		@RequestBody @Valid RegistrationProductForm registrationProductForm) {
 
-		return ResponseEntity.ok()
+		return ResponseEntity.status(HttpStatus.CREATED)
 			.body(ResponseProduct.fromDto(productWriteService.create(registrationProductForm)));
 	}
 

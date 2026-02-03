@@ -41,4 +41,10 @@ public class ProductWriteService {
 		);
 		productRepository.deleteById(id);
 	}
+
+	public void decreaseStock(ProductDto productDto) {
+		Product product = productDto.toEntity();
+		product.decreaseStock();
+		productRepository.save(product);
+	}
 }
