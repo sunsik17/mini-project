@@ -50,9 +50,9 @@ public class Product extends BaseEntity {
 		}
 	}
 
-	public void decreaseStock() {
-		Assert.isTrue(stock - 1 >= 0, "Stock is not enough");
-		this.stock--;
+	public void decreaseStock(Long quantity) {
+		Assert.isTrue(stock - quantity >= 0, "Stock is not enough");
+		this.stock -= quantity;
 	}
 }
 

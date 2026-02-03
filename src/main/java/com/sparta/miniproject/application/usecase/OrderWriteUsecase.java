@@ -19,7 +19,7 @@ public class OrderWriteUsecase {
 
 	public OrderResponse execute(CreateOrderForm createOrderForm) {
 		ProductDto productDto = productReadService.getOneProduct(createOrderForm.productId());
-		productWriteService.decreaseStock(productDto);
+		productWriteService.decreaseStock(productDto, createOrderForm.quantity());
 		return OrderResponse.fromDto(
 			orderWriteService.createOrder(productDto, createOrderForm)
 		);
