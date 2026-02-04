@@ -4,6 +4,7 @@ import com.sparta.miniproject.domain.product.entity.Product;
 import java.time.LocalDateTime;
 import lombok.Builder;
 
+@Builder
 public record ProductDto(
 	Long id,
 	String name,
@@ -12,9 +13,6 @@ public record ProductDto(
 	LocalDateTime createdAt,
 	LocalDateTime updatedAt
 ) {
-	@Builder
-	public ProductDto {}
-
 	public static ProductDto from(Product product) {
 		return ProductDto.builder()
 			.id(product.getId())
