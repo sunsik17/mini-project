@@ -4,6 +4,7 @@ import com.sparta.miniproject.domain.order.dto.OrderDto;
 import java.time.LocalDateTime;
 import lombok.Builder;
 
+@Builder
 public record OrderResponse(
 	Long product_id,
 	String productName,
@@ -12,8 +13,6 @@ public record OrderResponse(
 	String status,
 	LocalDateTime createdAt
 ) {
-	@Builder
-	public OrderResponse {}
 
 	public static OrderResponse fromDto(OrderDto orderDto) {
 		return OrderResponse.builder()
